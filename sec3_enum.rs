@@ -9,6 +9,28 @@ enum Person {
     Info { name: String, height: i32 }
 }
 
+enum Status {
+    Rich,
+    Poor,
+}
+
+enum Work {
+    Civilian,
+    Soldier,
+}
+
+enum Number {
+    Zero,
+    One,
+    Two,
+}
+
+enum Color {
+    Red = 0xff0000,
+    Green = 0x00ff00,
+    Blue = 0x0000ff,
+}
+
 fn inspect(p: Person) {
     match p {
         Person::Skinny => println!("Is skinny"),
@@ -31,6 +53,27 @@ fn main() {
     inspect(dave);
     inspect(john);
     inspect(larry);
-}
 
+    use Status::{Rich, Poor};
+    use Work::*;
+
+    let status = Poor;
+    let work = Civilian;
+
+    match status {
+        Rich => println!("The rich"),
+        Poor => println!("The poor"),
+    }
+
+    match work {
+        Civilian => println!("Civilians work!"),
+        Soldier  => println!("Soldiers fight!"),
+    }
+
+    println!("zero is {}", Number::Zero as i32);
+    println!("one is {}", Number::One as i32);
+
+    println!("roses are #{:06x}", Color::Red as i32);
+    println!("violets are #{:06x}", Color::Blue as i32);
+}
 
